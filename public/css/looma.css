@@ -1,0 +1,198 @@
+:root {
+  --looma-indigo: #6366f1;
+  --looma-indigo-dark: #4f46e5;
+  --looma-coral: #f97316;
+  --looma-coral-dark: #ea580c;
+  --looma-ink: #1e1b4b;
+  --looma-muted: #64748b;
+  --looma-surface: #ffffff;
+  --looma-bg: #f8f7ff;
+  --looma-line: #e2e8f0;
+  --font-display: "Sora", system-ui, sans-serif;
+  --font-body: "DM Sans", system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--looma-ink);
+  background:
+    radial-gradient(ellipse 80% 50% at 10% -10%, rgba(99, 102, 241, 0.18), transparent 55%),
+    radial-gradient(ellipse 60% 40% at 100% 0%, rgba(249, 115, 22, 0.12), transparent 50%),
+    linear-gradient(180deg, #f8f7ff 0%, #f1f5f9 100%);
+  min-height: 100vh;
+}
+
+h1, h2, h3, .brand-word {
+  font-family: var(--font-display);
+}
+
+.looma-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.88);
+  border-bottom: 1px solid var(--looma-line);
+}
+
+.brand-word {
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--looma-indigo);
+}
+
+.btn-coral {
+  background: var(--looma-coral);
+  color: #fff;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.btn-coral:hover {
+  background: var(--looma-coral-dark);
+  transform: translateY(-1px);
+}
+
+.btn-indigo {
+  background: var(--looma-indigo);
+  color: #fff;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.btn-indigo:hover {
+  background: var(--looma-indigo-dark);
+  transform: translateY(-1px);
+}
+
+.product-tile {
+  background: var(--looma-surface);
+  border: 1px solid var(--looma-line);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.product-tile:hover {
+  border-color: rgba(99, 102, 241, 0.45);
+  transform: translateY(-3px);
+}
+
+.store-seal {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  color: var(--looma-indigo-dark);
+  background: rgba(99, 102, 241, 0.1);
+  padding: 0.2rem 0.55rem;
+}
+
+.drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.45);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  z-index: 50;
+}
+
+.drawer-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.cart-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: min(100%, 420px);
+  height: 100%;
+  background: #fff;
+  transform: translateX(100%);
+  transition: transform 0.28s ease;
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -8px 0 30px rgba(15, 23, 42, 0.12);
+}
+
+.cart-drawer.open {
+  transform: translateX(0);
+}
+
+.store-package {
+  border: 1px solid var(--looma-line);
+  background: #fafafa;
+}
+
+.fade-up {
+  animation: fadeUp 0.45s ease both;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stat-value {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 70;
+  padding: 1rem;
+}
+
+.modal-backdrop.open {
+  display: flex;
+}
+
+.toast {
+  position: fixed;
+  bottom: 1.25rem;
+  right: 1.25rem;
+  z-index: 80;
+  background: var(--looma-ink);
+  color: #fff;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+  max-width: 20rem;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.toast.error {
+  background: #b91c1c;
+}
+
+.toast.success {
+  background: #047857;
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Entrar na Looma</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { looma: { indigo: '#6366F1', coral: '#F97316', ink: '#1e1b4b' } },
+          fontFamily: { display: ['Sora', 'sans-serif'], body: ['DM Sans', 'sans-serif'] }
+        }
+      }
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Sora:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/looma.css" />
+</head>
+<body class="font-body text-looma-ink min-h-screen flex flex-col">
+  <header class="looma-header">
+    <div class="max-w-md mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="/" class="brand-word text-2xl">Looma</a>
+      <a href="/" class="text-sm text-slate-500 hover:text-looma-indigo">Voltar à vitrine</a>
+    </div>
+  </header>
+
+  <main class="flex-1 flex items-center justify-center px-4 py-10">
+    <div class="w-full max-w-md fade-up">
+      <h1 class="font-display text-2xl font-bold mb-1">Bem-vindo à Looma</h1>
+      <p class="text-sm text-slate-500 mb-6">Onde todas as lojas se conectam.</p>
+
+      <div class="flex gap-2 mb-6 p-1 bg-white border border-slate-200 rounded-lg">
+        <button type="button" id="tab-login" class="flex-1 py-2 text-sm font-semibold rounded-md bg-looma-indigo text-white">Entrar</button>
+        <button type="button" id="tab-register" class="flex-1 py-2 text-sm font-semibold rounded-md text-slate-600">Criar conta</button>
+      </div>
+
+      <form id="form-login" class="space-y-4 bg-white border border-slate-200 rounded-xl p-5">
+        <label class="block text-sm">
+          E-mail
+          <input name="email" type="email" required class="mt-1 w-full rounded-lg border border-slate-200 px-3 py-2 outline-none focus:border-looma-indigo" />
+        </label>
+        <label class="block text-sm">
+          Senha
+          <input name="password" type="password" required minlength="6" class="mt-1 w-full rounded-lg border border-slate-200 px-3 py-2 outline-none focus:border-looma-indigo" />
+        </label>
+        <button type="submit" class="btn-coral w-full font-semibold py-2.5 rounded-lg">Entrar</button>
+      </form>
+
+      <form id="form-register" class="space-y-4 bg-white border border-slate-200 rounded-xl p-5 hidden">
+        <label class="block text-sm">
+          Nome
+          <input name="name" type="text" required minlength="2" class="mt-1 w-full rounded-lg border border-slate-200 px-3 py-2 outline-none focus:border-looma-indigo" />
+        </label>
+        <label class="block text-sm">
+          E-mail
+          <input name="email" type="email" required class="mt-1 w-full rounded-lg border border-slate-200 px-3 py-2 outline-none focus:border-looma-indigo" />
+        </label>
+        <label class="block text-sm">
+          Senha
+          <input name="password" type="password" required minlength="6" class="mt-1 w-full rounded-lg border border-slate-200 px-3 py-2 outline-none focus:border-looma-indigo" />
+        </label>
+        <button type="submit" class="btn-indigo w-full font-semibold py-2.5 rounded-lg">Criar conta na Looma</button>
+      </form>
+
+      <p id="auth-msg" class="mt-4 text-sm text-center text-red-600 hidden"></p>
+    </div>
+  </main>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+</body>
+</html>
